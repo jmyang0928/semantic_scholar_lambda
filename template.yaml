@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  A Lambda function that looks up paper citations and author h-index from Semantic Scholar.
+
+Resources:
+  # 定義 Lambda 函式
+  PaperLookupFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: src/  # 指向包含您程式碼的資料夾
+      Handler: lambda_function.lambda_handler # 檔案名.函式名
+      Runtime: python3.9
+      Timeout: 30
+      MemorySize: 256 # 給予比預設稍多的記憶體
+      Description: "Fetches paper details from Semantic Scholar API."
+      # 定義觸發此 Lambda 的事件
+      Events:
+        PaperApi:
+          Type: Api # 這會自動建立一個 API Gateway
+          Properties:
+            Path: /paper # API 的路徑
+            Method: get # 支援的 HTTP 方法
+
+Outputs:
+  # 部署完成後，輸出 API Gateway 的網址
+  PaperApiEndpoint:
+    Description: "API Gateway endpoint URL for the Paper Lookup function"
+    Value: !Sub "https://ditu.men/creative_works_categories/paper/${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/paper/"
