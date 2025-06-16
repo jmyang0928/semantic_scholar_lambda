@@ -15,8 +15,8 @@ A serverless application built on AWS Lambda that queries academic paper informa
 ```
 semantic_scholar_lambda/
 ├── src/
-│   └── lambda_function.py    # Main Lambda function
-├── requirements.txt          # Python dependencies
+│   ├── lambda_function.py    # Main Lambda function
+│   └── requirements.txt      # Python dependencies
 ├── template.yaml            # AWS SAM deployment template
 └── README.md               # Project documentation
 ```
@@ -46,7 +46,7 @@ cd semantic_scholar_lambda
 
 2. Install Python dependencies:
 ```bash
-pip install -r requirements.txt
+pip install -r src/requirements.txt
 ```
 
 3. Test Lambda function locally:
@@ -147,7 +147,7 @@ curl -X POST \
 
 - **Runtime**: Python 3.9
 - **Memory**: 256 MB
-- **Timeout**: 30 seconds
+- **Timeout**: 90 seconds
 - **Handler**: lambda_function.lambda_handler
 
 ### API Gateway Settings

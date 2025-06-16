@@ -11,7 +11,7 @@ Resources:
       CodeUri: src/  # 指向包含您程式碼的資料夾
       Handler: lambda_function.lambda_handler # 檔案名.函式名
       Runtime: python3.9
-      Timeout: 30
+      Timeout: 90
       MemorySize: 256 # 給予比預設稍多的記憶體
       Description: "Fetches paper details from Semantic Scholar API."
       # 定義觸發此 Lambda 的事件
