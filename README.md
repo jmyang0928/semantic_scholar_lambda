@@ -147,7 +147,7 @@ curl -X POST \
 
 - **Runtime**: Python 3.9
 - **Memory**: 256 MB
-- **Timeout**: 90 seconds
+- **Timeout**: 300 seconds
 - **Handler**: lambda_function.lambda_handler
 
 ### API Gateway Settings
